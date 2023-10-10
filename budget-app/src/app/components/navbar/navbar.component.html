@@ -3,8 +3,8 @@
         <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+        <button mat-menu-item [routerLink]="['/home']">Home</button>
+        <button mat-menu-item [routerLink]="['/settings']" routerLinkActive="router-link-active">Settings</button>
     </mat-menu>
     <span>Budget App</span>
     <span class="example-spacer"></span>

@@ -3,14 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatIconModule} from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { DataCardsComponent } from './components/data-cards/data-cards.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartComponent } from './components/chart/chart.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HomeDialogComponent } from './pages/home/home-dialog/home-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +24,18 @@ import {MatTabsModule} from '@angular/material/tabs';
     HomeComponent,
     DataCardsComponent,
     ChartComponent,
+    HomeDialogComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogModule,
     MatTabsModule,
     BrowserAnimationsModule,
     NavbarComponent,

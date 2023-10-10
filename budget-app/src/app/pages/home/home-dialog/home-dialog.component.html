@@ -1,0 +1,27 @@
+<section class="container dialog-form">
+    <h1 class="mat-dialog-title">{{data.title}}</h1>
+    <form class="form-flex w-full" [formGroup]="amountForm">
+        <mat-dialog-content>
+            <div class="flex flex-row items-center w-full">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label translate>{{data.title}} Name</mat-label>
+                    <input matInput type="text" formControlName="amountName" [placeholder]="data.title + ' Name'">
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-row items-center w-full">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label translate>Amount</mat-label>
+                    <input matInput type="text" formControlName="amount"
+                        placeholder="amount">   
+                </mat-form-field>
+            </div>
+
+        </mat-dialog-content>
+        <div class="btn-dialog-flex">
+            <button mat-raised-button color="warn" class="mx-2" translate (click)="closeDialog()">Cancel</button>
+            <button mat-raised-button color="primary" (click)="saveDialog()" [disabled]="!amountForm.valid "
+                translate>Save</button>
+        </div>
+    </form>
+</section>

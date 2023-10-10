@@ -19,3 +19,16 @@ body {
     justify-content: center;
     align-items: center;
 }
+.dialog-form {
+    overflow: hidden;
+    padding: 2rem 0;
+    .btn-dialog-flex {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn-dialog-flex button {
+        margin: 0 5px;
+    }
+}

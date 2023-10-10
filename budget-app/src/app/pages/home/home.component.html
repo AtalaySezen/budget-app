@@ -11,8 +11,15 @@
     </div>
 
     <div class="tabs-bg">
+
         <mat-tab-group>
-            <mat-tab *ngFor="let item of chartsArray ">
+            <mat-tab *ngFor="let item of chartsArray">
+                <div class="btn-add">
+                    <button (click)="openDialog('New ' + item.labels, 1)" class="btn" mat-raised-button
+                        [style]="(item.labels == 'Income') ? 'background-color: orange;' : ((item.labels== 'Expense') ? 'background-color: #3875ea;' : ((item.labels == 'Loan Payments') ? 'background-color: #28a745;': (item.labels == 3) ? 'background-color: #dc3545;' : ''))">
+                        Add New {{ item.labels }}
+                    </button>
+                </div>
                 <ng-template mat-tab-label>{{item.labels}}</ng-template>
                 <div>
                     <app-chart [chartData]="[item]"></app-chart>
