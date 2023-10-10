@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,19 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  chartsArray: any[] = [
-    { chartId: 'chart1', amount: 14000, labels: 'Income', colors: 'green'},
-    { chartId: 'chart2', amount: 500, labels: 'Expense', colors: 'red' },
-    { chartId: 'chart3', amount: 8600, labels: 'Loan Payments', colors: 'yellow' }
-  ];
+  chartsArray: any[] = [];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dataService: DataService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log(this.chartsArray);
+    this.getAmountData();
+  }
+
+  getAmountData() {
+    this.dataService.GetAmountData().subscribe(data => {
+      console.log(data);
+      this.chartsArray = data;
+    })
   }
 
   async openDialog(title: string, id: number) {

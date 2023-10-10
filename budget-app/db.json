@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "chartId": "chart1",
+      "labels": "Income",
+      "colors": "green",
+      "incomes": [
+        {
+          "salary": 7500
+        },
+        {
+          "youtube": 400
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "chartId": "chart2",
+      "labels": "Expense",
+      "colors": "red",
+      "expenses": [
+        {
+          "transportation": 600
+        },
+        {
+          "shopping for clothes": 450
+        },
+        {
+          "food": 1200
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "chartId": "chart3",
+      "labels": "Loan Payments",
+      "colors": "yellow",
+      "fixedExpenses": [
+        {
+          "Loan Payments": 600
+        },
+        {
+          "rent": 3200
+        }
+      ]
+    }
+  ]
+}

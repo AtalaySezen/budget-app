@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import Chart from 'chart.js/auto';
+import Chart, { elements } from 'chart.js/auto';
 
 export interface ChartData {
   labels: string,
@@ -15,13 +15,13 @@ export interface ChartData {
 })
 export class ChartComponent {
   title: string = 'chartDemo';
-  barChart: any = [];
+  pieChart: any = [];
   labels: string[];
   colors: string[];
 
   @Input() chartData: any[];
   @Input() chartId: string;
-  @Input() amount: number;
+  @Input() amount: any[] = [];
 
   @ViewChild('canvas') canvas: ElementRef;
 
@@ -29,20 +29,17 @@ export class ChartComponent {
   }
 
   ngAfterViewInit() {
-    this.chartData.map(element => {
-      this.labels = element.labels;
-      this.colors = element.colors;
-      this.amount = element.amount;
-    })
+    this.calculateAmounts();
+    this.calculateLabelsAndColors();
 
-    this.barChart = new Chart(this.canvas.nativeElement.getContext('2d'), {
+    this.pieChart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'pie',
       data: {
         labels: [
           this.labels
         ],
         datasets: [{
-          data: [this.amount],
+          data: this.amount,
           backgroundColor: this.colors,
           hoverOffset: 1
         }]
@@ -50,6 +47,51 @@ export class ChartComponent {
     });
 
   }
+
+
+  calculateLabelsAndColors() {
+    this.chartData.map(element => {
+      this.labels = element.labels;
+      this.colors = element.colors;
+    })
+  }
+
+  calculateAmounts() {
+    this.chartData.forEach((item: any) => {
+      let totalIncomes = 0;
+      let totalExpenses = 0;
+      let totalFixedExpenses = 0;
+
+      if (item.incomes) {
+        item.incomes.forEach((income: any) => {
+          for (const key in income) {
+            totalIncomes += income[key];
+          }
+        });
+        this.amount.push(totalIncomes);
+      }
+
+      if (item.expenses) {
+        item.expenses.forEach((expense: any) => {
+          for (const key in expense) {
+            totalExpenses += expense[key];
+          }
+        });
+        this.amount.push(totalExpenses);
+      }
+
+      if (item.fixedExpenses) {
+        item.fixedExpenses.forEach((fixedExpense: any) => {
+          for (const key in fixedExpense) {
+            totalFixedExpenses += fixedExpense[key];
+          }
+        });
+        this.amount.push(totalFixedExpenses);
+      }
+    });
+
+  }
+
 
 
 
