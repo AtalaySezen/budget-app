@@ -9,9 +9,16 @@
         <app-data-cards [icon]="'payments'" [infoHeader]="'500'" [color]="'green'"
             [infoText]="'Current Budget'"></app-data-cards>
     </div>
-    
-    <div>
-        <app-chart></app-chart>
+
+    <div class="tabs-bg">
+        <mat-tab-group>
+            <mat-tab *ngFor="let item of chartsArray ">
+                <ng-template mat-tab-label>{{item.labels}}</ng-template>
+                <div>
+                    <app-chart [chartData]="[item]"></app-chart>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 
 

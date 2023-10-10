@@ -10,6 +10,7 @@ import { DataCardsComponent } from './components/data-cards/data-cards.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartComponent } from './components/chart/chart.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ChartComponent } from './components/chart/chart.component';
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     NavbarComponent,
     FormsModule,

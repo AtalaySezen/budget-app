@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { getRelativePosition } from 'chart.js/helpers';
+
+export interface ChartData {
+  labels: string,
+  colors: string,
+  amount: number,
+  chartId: string
+}
 
 @Component({
   selector: 'app-chart',
@@ -9,28 +15,40 @@ import { getRelativePosition } from 'chart.js/helpers';
 })
 export class ChartComponent {
   title: string = 'chartDemo';
+  barChart: any = [];
+  labels: string[];
+  colors: string[];
 
-  ngOnInit() {
-    var myChart = new Chart("myChart", {
+  @Input() chartData: any[];
+  @Input() chartId: string;
+  @Input() amount: number;
+
+  @ViewChild('canvas') canvas: ElementRef;
+
+  constructor() {
+  }
+
+  ngAfterViewInit() {
+    this.chartData.map(element => {
+      this.labels = element.labels;
+      this.colors = element.colors;
+      this.amount = element.amount;
+    })
+
+    this.barChart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'pie',
       data: {
         labels: [
-          'Expenses',
-          'Incomes',
-          'Loan Payment'
+          this.labels
         ],
         datasets: [{
-          // label: 'My First Dataset',
-          data: [5400, 14000, 8600],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
+          data: [this.amount],
+          backgroundColor: this.colors,
           hoverOffset: 1
         }]
       }
     });
+
   }
 
 
