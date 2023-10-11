@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-home-dialog',
@@ -9,16 +10,17 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class HomeDialogComponent {
   amountForm: FormGroup;
-
+  dataId: number;
 
   constructor(
+    private dataService: DataService,
     public dialogRef: MatDialogRef<HomeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log(this.data.title)
+    this.dataId = data.id;
     if (this.data.title == 'New Incomes') {
       this.amountForm = new FormGroup({
         amountName: new FormControl('', [Validators.required]),
-        amount: new FormControl('', [Validators.required]),
+        amount: new FormControl(0, [Validators.required]),
       })
     } else {
       this.amountForm = new FormGroup({
@@ -35,10 +37,24 @@ export class HomeDialogComponent {
     let amount = this.amountForm.get('amount')?.value;
     let amountName = this.amountForm.get('amountName')?.value;
     let data = {
-      amount: amount,
-      amountName: amountName
+      type: amountName,
+      amount: Number(amount)
     }
-    console.log(data);
+
+    this.dataService.GetAmountDataWithId(this.dataId).subscribe(existingData => {
+      let updatedData = existingData.incomes;
+      let wholeData = existingData;
+      updatedData.push(data);
+      wholeData.incomes = updatedData;
+
+      this.dataService.PutAmountData(this.dataId, wholeData).subscribe(response => {
+        console.log('Ok', response);
+      }, error => {
+        console.error('Hata', error);
+      });
+
+    });
+
 
   }
 

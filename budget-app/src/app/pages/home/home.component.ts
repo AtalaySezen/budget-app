@@ -37,7 +37,6 @@ export class HomeComponent {
 
 
   async openDialog(title: string, id: number) {
-    console.log(title);
     const dialogRef = this.dialog.open(HomeDialogComponent, {
       width: '800px',
       height: 'auto',

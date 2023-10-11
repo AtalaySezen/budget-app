@@ -22,6 +22,10 @@ export class DataService {
     return this.http.post<Response>(environment.apiUrl, data, { observe: 'response' });
   }
 
+  PostAmountDataWithId(id: number, data: any) {
+    return this.http.post<Response>(environment.apiUrl + `/${id}`, data, { observe: 'response' });
+  }
+
   DeleteAmountData(id: number) {
     return this.http.delete<Response>(environment.apiUrl + `/${id}`, { observe: 'response' });
   }
