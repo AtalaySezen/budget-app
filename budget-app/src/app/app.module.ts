@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { TableComponent } from './components/table/table.component';
 import { TableDialogComponent } from './components/table/table-dialog/table-dialog.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TableDialogComponent } from './components/table/table-dialog/table-dial
     TableComponent,
     MatInputModule,
     HttpClientModule,
+    LoaderComponent,
     TableDialogComponent,
     MatTableModule,
     ReactiveFormsModule,

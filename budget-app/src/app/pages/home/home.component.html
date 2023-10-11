@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<section class="container">
+<app-loader *ngIf="homeRepository.loader"></app-loader>
+<section class="container" *ngIf="!homeRepository.loader">
     <div class="cards">
         <app-data-cards [icon]="'calendar_month'" [infoHeader]="currentDate|date:'shortDate'"
             [infoText]="'Today'"></app-data-cards>

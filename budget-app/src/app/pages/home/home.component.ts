@@ -6,12 +6,15 @@ import { HomeRepository } from './home.repository';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   currentDate = new Date();
 
-  constructor(private dialog: MatDialog, public homeRepository: HomeRepository) {
+  constructor(
+    private dialog: MatDialog,
+    public homeRepository: HomeRepository
+  ) {
     this.homeRepository.getAmountData();
   }
 
@@ -21,21 +24,14 @@ export class HomeComponent {
       height: 'auto',
       data: {
         id: id,
-        title: title
-      }
+        title: title,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result && result.event == 'close') {
         this.homeRepository.getAmountData();
       }
     });
   }
-
-
-
-
-
-
-
 }

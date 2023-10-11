@@ -12,7 +12,7 @@ import { TableDialogComponent } from './table-dialog/table-dialog.component';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [MatTableModule, MatIconModule, MatButtonModule]
+  imports: [MatTableModule, MatIconModule, MatButtonModule],
 })
 export class TableComponent {
   @Input() dataSource = new MatTableDataSource<any>();
@@ -20,7 +20,7 @@ export class TableComponent {
   @Input() dataType: string;
   displayedColumns = ['type', 'amount', 'actions'];
 
-  constructor(private dialog: MatDialog, private dataService: DataService) { }
+  constructor(private dialog: MatDialog, private dataService: DataService) {}
 
   openDialog(title: string, id: number) {
     const dialogRef = this.dialog.open(HomeDialogComponent, {
@@ -28,13 +28,13 @@ export class TableComponent {
       height: 'auto',
       data: {
         id: id,
-        title: title
-      }
+        title: title,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result && result.event == 'success') {
-        console.log("ok");
+        console.log('ok');
       }
     });
   }
@@ -46,22 +46,14 @@ export class TableComponent {
       data: {
         id: id,
         type: type,
-        dataType: this.dataType
-      }
+        dataType: this.dataType,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result && result.event == 'success') {
-        console.log("ok");
+        console.log('ok');
       }
     });
-
   }
-
-
 }
-
-
-
-
-

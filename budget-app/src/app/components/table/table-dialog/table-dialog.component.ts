@@ -1,6 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { HomeRepository } from 'src/app/pages/home/home.repository';
 import { DataService } from 'src/app/shared/services/data.service';
 
@@ -16,14 +20,19 @@ export class TableDialogComponent {
   type: string;
   id: number;
 
-  constructor(public dialog: MatDialog, private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any, private homeRepository: HomeRepository) {
+  constructor(
+    public dialog: MatDialog,
+    private dataService: DataService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private homeRepository: HomeRepository
+  ) {
     this.dataType = data.dataType;
     this.type = data.type;
     this.id = data.id;
   }
 
   deleteDialog() {
-    this.dataService.GetAmountDataWithId(this.id).subscribe(existingData => {
+    this.dataService.GetAmountDataWithId(this.id).subscribe((existingData) => {
       let updatedData = existingData;
       let dataItems: any[] = [];
 
@@ -42,28 +51,23 @@ export class TableDialogComponent {
           return;
       }
 
-      const indexToRemove = dataItems.findIndex((item: any) => item.type === this.type);
+      const indexToRemove = dataItems.findIndex(
+        (item: any) => item.type === this.type
+      );
 
       if (indexToRemove !== -1) {
         dataItems.splice(indexToRemove, 1);
       }
 
-      this.dataService.PutAmountData(this.id, updatedData).subscribe(response => {
-        console.log('Ok', response);
-        this.homeRepository.getAmountData();
-
-      }, error => {
-        console.error('Hata', error);
-      });
+      this.dataService.PutAmountData(this.id, updatedData).subscribe(
+        (response) => {
+          console.log('Ok', response);
+          this.homeRepository.getAmountData();
+        },
+        (error) => {
+          console.error('Hata', error);
+        }
+      );
     });
   }
-
-
-
-
-
-
-
 }
-
-
