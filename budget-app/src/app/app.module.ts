@@ -20,6 +20,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { TableComponent } from './components/table/table.component';
+import { TableDialogComponent } from './components/table/table-dialog/table-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TableComponent } from './components/table/table.component';
     TableComponent,
     MatInputModule,
     HttpClientModule,
+    TableDialogComponent,
     MatTableModule,
     ReactiveFormsModule,
     MatButtonModule,

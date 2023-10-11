@@ -17,7 +17,6 @@ export class HomeDialogComponent {
     public dialogRef: MatDialogRef<HomeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.dataId = data.id;
-    console.log(this.data.title);
     if (this.data.title == 'New Incomes') {
       this.amountForm = new FormGroup({
         amountName: new FormControl('', [Validators.required]),

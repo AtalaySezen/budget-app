@@ -3,7 +3,10 @@
     {
       "id": 1,
       "chartId": "chart1",
-      "colors": ["green","red"],
+      "colors": [
+        "green",
+        "red"
+      ],
       "incomes": [
         {
           "type": "salary",

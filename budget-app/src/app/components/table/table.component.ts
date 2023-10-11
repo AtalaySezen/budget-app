@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HomeDialogComponent } from 'src/app/pages/home/home-dialog/home-dialog.component';
+import { DataService } from 'src/app/shared/services/data.service';
+import { TableDialogComponent } from './table-dialog/table-dialog.component';
 
 @Component({
   selector: 'app-table',
@@ -15,11 +17,10 @@ import { HomeDialogComponent } from 'src/app/pages/home/home-dialog/home-dialog.
 export class TableComponent {
   @Input() dataSource = new MatTableDataSource<any>();
   @Input() id: number;
-
-
+  @Input() dataType: string;
   displayedColumns = ['type', 'amount', 'actions'];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private dataService: DataService) { }
 
   openDialog(title: string, id: number) {
     const dialogRef = this.dialog.open(HomeDialogComponent, {
@@ -38,8 +39,22 @@ export class TableComponent {
     });
   }
 
-  deleteAmount(id: number) {
-    console.log(id);
+  deleteAmount(id: number, type: string) {
+    const dialogRef = this.dialog.open(TableDialogComponent, {
+      width: '800px',
+      height: 'auto',
+      data: {
+        id: id,
+        type: type,
+        dataType: this.dataType
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.event == 'success') {
+        console.log("ok");
+      }
+    });
 
   }
 
