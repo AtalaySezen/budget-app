@@ -7,10 +7,12 @@
       "colors": "green",
       "incomes": [
         {
-          "salary": 7500
+          "type": "salary",
+          "amount": 7500
         },
         {
-          "youtube": 400
+          "type":"youtube",
+          "amount": 400
         }
       ]
     },
@@ -21,13 +23,8 @@
       "colors": "red",
       "expenses": [
         {
-          "transportation": 600
-        },
-        {
-          "shopping for clothes": 450
-        },
-        {
-          "food": 1200
+          "type": "transportation",
+          "amount": 600
         }
       ]
     },
@@ -38,10 +35,8 @@
       "colors": "yellow",
       "fixedExpenses": [
         {
-          "Loan Payments": 600
-        },
-        {
-          "rent": 3200
+          "type": "rent",
+          "amount": 3200
         }
       ]
     }

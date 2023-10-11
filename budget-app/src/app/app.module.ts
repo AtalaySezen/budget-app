@@ -18,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +35,12 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     MatIconModule,
     MatFormFieldModule,
+    TableComponent,
     MatInputModule,
     HttpClientModule,
+    MatTableModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatTableModule,
     MatDialogModule,
     MatTabsModule,
     BrowserAnimationsModule,
