@@ -3,8 +3,7 @@
     {
       "id": 1,
       "chartId": "chart1",
-      "labels": "Income",
-      "colors": "green",
+      "colors": ["green","red"],
       "incomes": [
         {
           "type": "salary",
@@ -14,25 +13,13 @@
           "type": "youtube",
           "amount": 400
         }
-      ]
-    },
-    {
-      "id": 2,
-      "chartId": "chart2",
-      "labels": "Expense",
-      "colors": "red",
+      ],
       "expenses": [
         {
           "type": "transportation",
           "amount": 600
         }
-      ]
-    },
-    {
-      "id": 3,
-      "chartId": "chart3",
-      "labels": "Loan Payments",
-      "colors": "yellow",
+      ],
       "fixedExpenses": [
         {
           "type": "rent",

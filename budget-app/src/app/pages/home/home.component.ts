@@ -14,7 +14,7 @@ export class HomeComponent {
   currentDate = new Date();
   numberExpenses: any = 0;
   currentBudget: number;
-  totalIncome:number;
+  totalIncome: number;
 
   constructor(private dataService: DataService, private dialog: MatDialog) {
     this.getAmountData();
@@ -23,15 +23,15 @@ export class HomeComponent {
   getAmountData() {
     this.dataService.GetAmountData().subscribe(data => {
       this.chartsArray = data;
-      this.numberExpenses = data[1].expenses.length;
+      this.numberExpenses = data[0].expenses.length;
       this.calculateCurrenntBudget(data);
     })
   }
 
   calculateCurrenntBudget(data: any[]) {
     this.totalIncome = data[0].incomes.reduce((total: any, income: any) => total + income.amount, 0);
-    const totalExpense = data[1].expenses.reduce((total: any, expense: any) => total + expense.amount, 0);
-    const totalFixedExpense = data[2].fixedExpenses.reduce((total: any, fixedExpense: any) => total + fixedExpense.amount, 0);
+    const totalExpense = data[0].expenses.reduce((total: any, expense: any) => total + expense.amount, 0);
+    const totalFixedExpense = data[0].fixedExpenses.reduce((total: any, fixedExpense: any) => total + fixedExpense.amount, 0);
     this.currentBudget = this.totalIncome - (totalExpense + totalFixedExpense);
   }
 
@@ -47,8 +47,8 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result && result.event == 'success') {
-        console.log("ok");
+      if (result && result.event == 'close') {
+        this.getAmountData();
       }
     });
   }

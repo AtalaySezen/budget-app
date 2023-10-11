@@ -32,11 +32,11 @@ export class ChartComponent {
       type: 'pie',
       data: {
         labels: [
-          this.labels
+          "Incomes", "Expenses", "Fixed Expenses"
         ],
         datasets: [{
           data: this.amount,
-          backgroundColor: this.colors,
+          backgroundColor: ["#4B99E6", "#CCEEE3", "#F777A4"],
           hoverOffset: 1
         }]
       }
