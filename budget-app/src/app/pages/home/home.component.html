@@ -3,10 +3,10 @@
     <div class="cards">
         <app-data-cards [icon]="'calendar_month'" [infoHeader]="currentDate|date:'shortDate'"
             [infoText]="'Today'"></app-data-cards>
-        <app-data-cards [icon]="'check'" [infoHeader]="'OCT 09 2023'"
-            [infoText]="'Latest Expense Date'"></app-data-cards>
-        <app-data-cards [icon]="'receipt'" [infoHeader]="numberExpenses" [infoText]="'Number of Expenses'"></app-data-cards>
-        <app-data-cards [icon]="'payments'" [infoHeader]="'500'" [color]="'green'"
+        <app-data-cards [icon]="'paid'" [infoHeader]="totalIncome" [infoText]="'Total Income'"></app-data-cards>
+        <app-data-cards [icon]="'receipt'" [infoHeader]="numberExpenses"
+            [infoText]="'Number of Expenses'"></app-data-cards>
+        <app-data-cards [icon]="'payments'" [infoHeader]="currentBudget" [color]="'green'"
             [infoText]="'Current Budget'"></app-data-cards>
     </div>
 
@@ -24,7 +24,7 @@
                 <div>
                     <app-chart [chartData]="[item]"></app-chart>
                 </div>
-                <div>
+                <div class="tab-table">
                     <app-table [dataSource]="item.incomes||item.expenses||item.fixedExpenses"></app-table>
                 </div>
             </mat-tab>
