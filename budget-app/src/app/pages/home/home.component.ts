@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/shared/services/data.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,16 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class HomeComponent {
   chartsArray: any[] = [];
 
-  constructor(private dataService: DataService, private dialog: MatDialog) { }
-
-  ngOnInit() {
+  constructor(private dataService: DataService, private dialog: MatDialog) {
     this.getAmountData();
   }
 
   getAmountData() {
     this.dataService.GetAmountData().subscribe(data => {
-      console.log(data);
       this.chartsArray = data;
     })
   }
+
 
   async openDialog(title: string, id: number) {
     console.log(title);

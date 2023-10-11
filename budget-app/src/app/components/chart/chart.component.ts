@@ -14,19 +14,15 @@ export interface ChartData {
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
+  @Input() chartData: any[];
+  @Input() chartId: string;
+  @Input() amount: any[] = [];
+  @ViewChild('canvas') canvas: ElementRef;
   title: string = 'chartDemo';
   pieChart: any = [];
   labels: string[];
   colors: string[];
 
-  @Input() chartData: any[];
-  @Input() chartId: string;
-  @Input() amount: any[] = [];
-
-  @ViewChild('canvas') canvas: ElementRef;
-
-  constructor() {
-  }
 
   ngAfterViewInit() {
     this.calculateAmounts();
@@ -45,7 +41,6 @@ export class ChartComponent {
         }]
       }
     });
-
   }
 
 
@@ -64,27 +59,21 @@ export class ChartComponent {
 
       if (item.incomes) {
         item.incomes.forEach((income: any) => {
-          for (const key in income) {
-            totalIncomes += income[key];
-          }
+          totalIncomes += income.amount;
         });
         this.amount.push(totalIncomes);
       }
 
       if (item.expenses) {
-        item.expenses.forEach((expense: any) => {
-          for (const key in expense) {
-            totalExpenses += expense[key];
-          }
+        item.expenses.forEach((expenses: any) => {
+          totalExpenses += expenses.amount;
         });
         this.amount.push(totalExpenses);
       }
 
       if (item.fixedExpenses) {
-        item.fixedExpenses.forEach((fixedExpense: any) => {
-          for (const key in fixedExpense) {
-            totalFixedExpenses += fixedExpense[key];
-          }
+        item.fixedExpenses.forEach((fixedExpenses: any) => {
+          totalFixedExpenses += fixedExpenses.amount;
         });
         this.amount.push(totalFixedExpenses);
       }
