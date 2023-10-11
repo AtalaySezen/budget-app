@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { HomeRepository } from 'src/app/pages/home/home.repository';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class TableDialogComponent {
   type: string;
   id: number;
 
-  constructor(public dialog: MatDialog, private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(public dialog: MatDialog, private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any, private homeRepository: HomeRepository) {
     this.dataType = data.dataType;
     this.type = data.type;
     this.id = data.id;
@@ -49,6 +50,8 @@ export class TableDialogComponent {
 
       this.dataService.PutAmountData(this.id, updatedData).subscribe(response => {
         console.log('Ok', response);
+        this.homeRepository.getAmountData();
+
       }, error => {
         console.error('Hata', error);
       });

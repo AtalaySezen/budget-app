@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { DataService } from 'src/app/shared/services/data.service';
+import { HomeRepository } from './home.repository';
 
 @Component({
   selector: 'app-home',
@@ -9,31 +9,11 @@ import { DataService } from 'src/app/shared/services/data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  chartsArray: any[] = [];
   currentDate = new Date();
-  numberExpenses: any = 0;
-  currentBudget: number;
-  totalIncome: number;
 
-  constructor(private dataService: DataService, private dialog: MatDialog) {
-    this.getAmountData();
+  constructor(private dialog: MatDialog, public homeRepository: HomeRepository) {
+    this.homeRepository.getAmountData();
   }
-
-  getAmountData() {
-    this.dataService.GetAmountData().subscribe(data => {
-      this.chartsArray = data;
-      this.numberExpenses = data[0].expenses.length;
-      this.calculateCurrenntBudget(data);
-    })
-  }
-
-  calculateCurrenntBudget(data: any[]) {
-    this.totalIncome = data[0].incomes.reduce((total: any, income: any) => total + income.amount, 0);
-    const totalExpense = data[0].expenses.reduce((total: any, expense: any) => total + expense.amount, 0);
-    const totalFixedExpense = data[0].fixedExpenses.reduce((total: any, fixedExpense: any) => total + fixedExpense.amount, 0);
-    this.currentBudget = this.totalIncome - (totalExpense + totalFixedExpense);
-  }
-
 
   async openDialog(title: string, id: number) {
     const dialogRef = this.dialog.open(HomeDialogComponent, {
@@ -47,10 +27,12 @@ export class HomeComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.event == 'close') {
-        this.getAmountData();
+        this.homeRepository.getAmountData();
       }
     });
   }
+
+
 
 
 

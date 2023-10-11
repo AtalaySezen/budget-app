@@ -3,15 +3,15 @@
     <div class="cards">
         <app-data-cards [icon]="'calendar_month'" [infoHeader]="currentDate|date:'shortDate'"
             [infoText]="'Today'"></app-data-cards>
-        <app-data-cards [icon]="'paid'" [color]="'green'" [infoHeader]="totalIncome"
+        <app-data-cards [icon]="'paid'" [color]="'green'" [infoHeader]="homeRepository.totalIncome"
             [infoText]="'Total Income'"></app-data-cards>
-        <app-data-cards [icon]="'receipt'" [infoHeader]="numberExpenses"
+        <app-data-cards [icon]="'receipt'" [infoHeader]="homeRepository.numberExpenses"
             [infoText]="'Number of Expenses'"></app-data-cards>
-        <app-data-cards [icon]="'payments'" [infoHeader]="currentBudget" [color]="'yellow'"
+        <app-data-cards [icon]="'payments'" [infoHeader]="homeRepository.currentBudget" [color]="'yellow'"
             [infoText]="'Current Budget'"></app-data-cards>
     </div>
 
-    <div class="w-100" *ngFor="let item of chartsArray">
+    <div class="w-100" *ngFor="let item of homeRepository.chartsArray">
 
         <ng-template mat-tab-label>{{item.labels}}</ng-template>
         <div>
@@ -19,14 +19,14 @@
         </div>
     </div>
 
-    <mat-tab-group class="w-100" *ngFor="let item of chartsArray">
+    <mat-tab-group class="w-100" *ngFor="let item of homeRepository.chartsArray">
         <mat-tab label="Incomes">
             <div class="btn-flex">
                 <button color="primary" (click)="openDialog('New Income', 1)" class="btn" mat-raised-button>
                     Add New Income
                 </button>
             </div>
-            <app-table [id]="item.id" [dataType]="'incomes'"  [dataSource]="item.incomes"></app-table>
+            <app-table [id]="item.id" [dataType]="'incomes'" [dataSource]="item.incomes"></app-table>
         </mat-tab>
         <mat-tab label="Expenses">
             <div class="btn-flex">
@@ -34,7 +34,7 @@
                     Add New Expense
                 </button>
             </div>
-            <app-table [id]="item.id" [dataType]="'expenses'"  [dataSource]="item.expenses"></app-table>
+            <app-table [id]="item.id" [dataType]="'expenses'" [dataSource]="item.expenses"></app-table>
         </mat-tab>
         <mat-tab label="Fixed Expenses">
             <div class="btn-flex">
