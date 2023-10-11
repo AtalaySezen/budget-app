@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class DataCardsComponent {
   @Input() icon: string = '';
-  @Input() infoHeader: string = '';
+  @Input() infoHeader: any;
   @Input() infoText: string = '';
   @Input() color: string = '';
 
@@ -16,5 +16,5 @@ export class DataCardsComponent {
 
 
 
-  
+
 }

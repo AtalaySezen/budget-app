@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 <section class="container">
     <div class="cards">
-        <app-data-cards [icon]="'calendar_month'" [infoHeader]="'OCT 09 2023'"
-            [infoText]="'First Expense Date'"></app-data-cards>
+        <app-data-cards [icon]="'calendar_month'" [infoHeader]="currentDate|date:'shortDate'"
+            [infoText]="'Today'"></app-data-cards>
         <app-data-cards [icon]="'check'" [infoHeader]="'OCT 09 2023'"
             [infoText]="'Latest Expense Date'"></app-data-cards>
-        <app-data-cards [icon]="'receipt'" [infoHeader]="'2'" [infoText]="'Number of Expenses'"></app-data-cards>
+        <app-data-cards [icon]="'receipt'" [infoHeader]="numberExpenses" [infoText]="'Number of Expenses'"></app-data-cards>
         <app-data-cards [icon]="'payments'" [infoHeader]="'500'" [color]="'green'"
             [infoText]="'Current Budget'"></app-data-cards>
     </div>
@@ -15,7 +15,8 @@
             <mat-tab *ngFor="let item of chartsArray">
                 <div class="btn-add">
                     <button (click)="openDialog('New ' + item.labels, 1)" class="btn" mat-raised-button
-                        [style]="(item.labels == 'Income') ? 'background-color: orange;' : ((item.labels== 'Expense') ? 'background-color: #3875ea;' : ((item.labels == 'Loan Payments') ? 'background-color: #28a745;': (item.labels == 3) ? 'background-color: #dc3545;' : ''))">
+                        [style]="(item.labels == 'Income') ? 'background-color: green; color:white;' : ((item.labels== 'Expense') ? 'background-color: red; color:white;' 
+                        : ((item.labels == 'Loan Payments') ? 'background-color: yellow; color:black;': (item.labels == 3) ? 'background-color: #dc3545;' : ''))">
                         Add New {{ item.labels }}
                     </button>
                 </div>

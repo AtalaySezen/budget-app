@@ -1,3 +1,14 @@
+
 table {
     width: 100%;
-}
+  }
+  
+  td:hover {
+    background: whitesmoke;
+  }
+  
+  td {
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+  

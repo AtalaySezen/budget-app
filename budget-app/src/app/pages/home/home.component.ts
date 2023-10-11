@@ -11,6 +11,9 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class HomeComponent {
   chartsArray: any[] = [];
+  currentDate = new Date();
+  numberExpenses: number = 0;
+
 
   constructor(private dataService: DataService, private dialog: MatDialog) {
     this.getAmountData();
@@ -19,6 +22,7 @@ export class HomeComponent {
   getAmountData() {
     this.dataService.GetAmountData().subscribe(data => {
       this.chartsArray = data;
+      this.numberExpenses = data[1].expenses.length;
     })
   }
 
