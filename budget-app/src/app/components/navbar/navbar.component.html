@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar [color]="toolbarColor">
     <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
     </button>
@@ -8,8 +8,19 @@
     </mat-menu>
     <span>Budget App</span>
     <span class="example-spacer"></span>
+ 
+    <button mat-button [matMenuTriggerFor]="colorMenu">
+        <mat-icon>palette</mat-icon>
+    </button>
+    <mat-menu #colorMenu="matMenu">
+        <button mat-menu-item (click)="setNavbarColor('primary')">Blue</button>
+        <button mat-menu-item (click)="setNavbarColor('accent')">Pink</button>
+        <button mat-menu-item (click)="setNavbarColor('warn')">Red</button>
+
+    </mat-menu>
     <button (click)="logOut()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>logout</mat-icon>
     </button>
+ 
 
 </mat-toolbar>

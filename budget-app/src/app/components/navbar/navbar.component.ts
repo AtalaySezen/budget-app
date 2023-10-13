@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -9,14 +9,31 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatToolbarModule, MatIconModule,RouterModule],
+  imports: [MatButtonModule, MatMenuModule, MatToolbarModule, MatIconModule, RouterModule],
 
 })
 export class NavbarComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.getNavbarColor();
+  }
+  @Input() toolbarColor: string;
 
   logOut() {
 
   }
 
+  setNavbarColor(navbarColor: string) {
+    localStorage.setItem('navbarColor', navbarColor);
+    this.getNavbarColor();
+  }
+
+  getNavbarColor() {
+    let localStorageColor = localStorage.getItem('navbarColor');
+    if (localStorageColor) {
+      this.toolbarColor = localStorageColor;
+    } else {
+      this.toolbarColor = 'primary';
+      localStorage.setItem('navbarColor', 'primary');
+    }
+  }
 }
