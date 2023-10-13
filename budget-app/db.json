@@ -9,18 +9,22 @@
       ],
       "incomes": [
         {
-          "type": "salary",
-          "amount": 7500
+          "type": "youtube",
+          "amount": 450
         },
         {
-          "type": "youtube",
-          "amount": 400
+          "type": "salary",
+          "amount": 6500
         }
       ],
       "expenses": [
         {
           "type": "transportation",
           "amount": 600
+        },
+        {
+          "type": "Food",
+          "amount": 550
         }
       ],
       "fixedExpenses": [

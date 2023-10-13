@@ -7,6 +7,7 @@ import { HomeDialogComponent } from 'src/app/pages/home/home-dialog/home-dialog.
 import { DataService } from 'src/app/shared/services/data.service';
 import { TableDialogComponent } from './table-dialog/table-dialog.component';
 import { CommonModule } from '@angular/common';
+import { HomeRepository } from 'src/app/pages/home/home.repository';
 
 @Component({
   selector: 'app-table',
@@ -21,7 +22,7 @@ export class TableComponent {
   @Input() dataType: string;
   displayedColumns = ['type', 'amount', 'actions'];
 
-  constructor(private dialog: MatDialog, private dataService: DataService) {
+  constructor(private dialog: MatDialog, private homeRepository: HomeRepository) {
   }
 
   openDialog(title: string, id: number, type?: string) {
@@ -35,10 +36,9 @@ export class TableComponent {
         dataType: this.dataType
       },
     });
-
     dialogRef.afterClosed().subscribe((result) => {
-      if (result && result.event == 'success') {
-        console.log('ok');
+      if (result && result.event == 'close') {
+        this.homeRepository.getAmountData();
       }
     });
   }

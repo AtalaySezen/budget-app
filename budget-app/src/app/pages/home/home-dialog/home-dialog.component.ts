@@ -50,6 +50,7 @@ export class HomeDialogComponent {
   saveDialog() {
     let amount = this.amountForm.get('amount')?.value;
     let amountName = this.amountForm.get('amountName')?.value;
+    
     let data = {
       type: amountName,
       amount: Number(amount),
