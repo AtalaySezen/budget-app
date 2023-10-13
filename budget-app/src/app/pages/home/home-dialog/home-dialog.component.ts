@@ -13,11 +13,13 @@ export class HomeDialogComponent {
   dataId: number;
   dataType: string;
   selectedAmountType: string;
+
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<HomeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+
     this.dataId = data.id;
     this.dataType = data.type;
     this.selectedAmountType = this.data.dataType;
@@ -26,7 +28,10 @@ export class HomeDialogComponent {
       if (this.data.title == 'New') {
         this.amountForm = new FormGroup({
           amountName: new FormControl('', [Validators.required]),
-          amount: new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
+          amount: new FormControl(null, [
+            Validators.required,
+            Validators.pattern('^[0-9]*$'),
+          ]),
         });
       } else {
         this.amountForm = new FormGroup({
@@ -45,16 +50,16 @@ export class HomeDialogComponent {
     }
   }
 
-  ngOnInit(): void { }
 
   saveDialog() {
     let amount = this.amountForm.get('amount')?.value;
     let amountName = this.amountForm.get('amountName')?.value;
-    
+
     let data = {
       type: amountName,
       amount: Number(amount),
     };
+
     if (this.data.title == 'New') {
       this.dataService
         .GetAmountDataWithId(this.dataId)
@@ -107,7 +112,7 @@ export class HomeDialogComponent {
           }
         });
     }
-    //Edit
+    //#region Edit
     else {
       if (this.selectedAmountType == 'incomes') {
         this.updateIncomes();
@@ -117,6 +122,7 @@ export class HomeDialogComponent {
         this.updateFixedExpenses();
       }
     }
+    //#endregion
   }
 
   //#region  Edit Data Functions
@@ -139,6 +145,7 @@ export class HomeDialogComponent {
           }
           return income;
         });
+
         existingData.incomes = updatedIncomes;
 
         this.dataService.PutAmountData(this.dataId, existingData).subscribe(
@@ -187,7 +194,6 @@ export class HomeDialogComponent {
       });
   }
 
-
   updateFixedExpenses() {
     let amount = this.amountForm.get('amount')?.value;
     let amountName = this.amountForm.get('amountName')?.value;
@@ -208,6 +214,7 @@ export class HomeDialogComponent {
           }
           return fixedExpenses;
         });
+        
         existingData.fixedExpenses = updatedfixedExpenses;
 
         this.dataService.PutAmountData(this.dataId, existingData).subscribe(
@@ -221,7 +228,6 @@ export class HomeDialogComponent {
         );
       });
   }
-
   //#endregion
 
   closeDialog() {

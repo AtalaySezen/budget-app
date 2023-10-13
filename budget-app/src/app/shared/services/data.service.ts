@@ -18,18 +18,9 @@ export class DataService {
     return this.http.get<any>(environment.apiUrl + '/' + id);
   }
 
-  PostAmountData(data: any) {
-    return this.http.post<Response>(environment.apiUrl, data, { observe: 'response' });
-  }
-
-  PostAmountDataWithId(id: number, data: any) {
-    return this.http.post<Response>(environment.apiUrl + `/${id}`, data, { observe: 'response' });
-  }
-
   DeleteAmountData(id: number) {
     return this.http.delete<Response>(environment.apiUrl + `/${id}`, { observe: 'response' });
   }
-
 
   PutAmountData(id: number, data: any): Observable<any> {
     return this.http.put<Response>(environment.apiUrl + `/${id}`, data, { observe: 'response' });

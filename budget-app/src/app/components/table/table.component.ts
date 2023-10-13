@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HomeDialogComponent } from 'src/app/pages/home/home-dialog/home-dialog.component';
-import { DataService } from 'src/app/shared/services/data.service';
 import { TableDialogComponent } from './table-dialog/table-dialog.component';
 import { CommonModule } from '@angular/common';
 import { HomeRepository } from 'src/app/pages/home/home.repository';

@@ -1,10 +1,12 @@
 .data-card {
-    width: 340px;
-    height: 180px;
-    background-color: #fff;
+    width: 300px;
+    max-width: 340px;
+    height: 150px;
+    border-radius: 10px;
     margin: 10px 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 .text-content {
     display: flex;
     flex-direction: column;
@@ -15,11 +17,9 @@
 }
 .info-header {
     font-size: 1.6rem;
-    color: black;
     font-weight: 400;
 }
 .info-text {
-    color: gray;
     font-size: 0.9rem;
 }
 .icon-card {
@@ -35,4 +35,11 @@
 }
 .yellow {
     color: yellow;
+}
+
+.green2 {
+    color: #5cc4b2;
+}
+.white {
+    color: #fff;
 }

@@ -11,12 +11,11 @@ export class HomeRepository {
   totalIncome: number;
   loader: boolean = false;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {}
 
   getAmountData() {
     this.loader = true;
     this.dataService.GetAmountData().subscribe((data) => {
-      console.log(data);
       this.chartsArray = data;
       this.numberExpenses = data[0].expenses.length;
       this.calculateCurrenntBudget(data);
@@ -39,6 +38,4 @@ export class HomeRepository {
     );
     this.currentBudget = this.totalIncome - (totalExpense + totalFixedExpense);
   }
-
-
 }

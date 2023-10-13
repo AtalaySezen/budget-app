@@ -11,15 +11,12 @@
         <app-data-cards [icon]="'payments'" [infoHeader]="homeRepository.currentBudget" [color]="'yellow'"
             [infoText]="'Current Budget'"></app-data-cards>
     </div>
-
     <div class="w-100" *ngFor="let item of homeRepository.chartsArray">
-
         <ng-template mat-tab-label>{{item.labels}}</ng-template>
         <div>
             <app-chart [chartData]="[item]"></app-chart>
         </div>
     </div>
-
     <mat-tab-group class="w-100" *ngFor="let item of homeRepository.chartsArray">
         <mat-tab label="Incomes">
             <div class="btn-flex">
@@ -46,10 +43,4 @@
             <app-table [id]="item.id" [dataType]="'fixedExpenses'" [dataSource]="item.fixedExpenses"></app-table>
         </mat-tab>
     </mat-tab-group>
-
-
-
-
-
-
 </section>

@@ -3,7 +3,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 
 })
 export class NavbarComponent {
-  constructor(private router: Router) {
+  constructor() {
     this.getNavbarColor();
   }
   @Input() toolbarColor: string;

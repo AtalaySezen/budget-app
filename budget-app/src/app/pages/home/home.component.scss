@@ -1,28 +1,29 @@
 .cards {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1rem;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .btn-flex {
-    padding: 1.5rem 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    .btn {
-        font-size: 0.8rem;
-    }
+  padding: 1.5rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .btn {
+    font-size: 0.8rem;
+  }
 }
+
 .tab-table {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 .w-100 {
-    width: 100%;
+  width: 100%;
 }
 mat-tab {
-    width: 100%;
+  width: 100%;
 }
