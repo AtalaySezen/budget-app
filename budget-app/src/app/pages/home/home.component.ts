@@ -18,13 +18,14 @@ export class HomeComponent {
     this.homeRepository.getAmountData();
   }
 
-  async openDialog(title: string, id: number) {
+  async openDialog(title: string, id: number, dataType: string) {
     const dialogRef = this.dialog.open(HomeDialogComponent, {
       width: '800px',
       height: 'auto',
       data: {
         id: id,
         title: title,
+        dataType: dataType
       },
     });
 

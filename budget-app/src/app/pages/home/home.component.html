@@ -23,7 +23,7 @@
     <mat-tab-group class="w-100" *ngFor="let item of homeRepository.chartsArray">
         <mat-tab label="Incomes">
             <div class="btn-flex">
-                <button color="primary" (click)="openDialog('New Income', 1)" class="btn" mat-raised-button>
+                <button color="primary" (click)="openDialog('New', 1,'income')" class="btn" mat-raised-button>
                     Add New Income
                 </button>
             </div>
@@ -31,7 +31,7 @@
         </mat-tab>
         <mat-tab label="Expenses">
             <div class="btn-flex">
-                <button color="warn" (click)="openDialog('New Income', 1)" class="btn" mat-raised-button>
+                <button color="warn" (click)="openDialog('New', 1,'expenses')" class="btn" mat-raised-button>
                     Add New Expense
                 </button>
             </div>
@@ -39,7 +39,7 @@
         </mat-tab>
         <mat-tab label="Fixed Expenses">
             <div class="btn-flex">
-                <button color="accent" (click)="openDialog('New Income', 1)" class="btn" mat-raised-button>
+                <button color="accent" (click)="openDialog('New', 1,'fixedExpenses')" class="btn" mat-raised-button>
                     Add New Fixed Expense
                 </button>
             </div>

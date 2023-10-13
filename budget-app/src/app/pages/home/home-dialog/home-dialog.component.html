@@ -1,19 +1,17 @@
 <section class="container dialog-form">
-    <h1 class="mat-dialog-title">{{data.title}}</h1>
     <form class="form-flex w-full" [formGroup]="amountForm">
         <mat-dialog-content>
-            <div class="flex flex-row items-center w-full">
+            <div class="flex flex-row items-center w-full" *ngIf="data.title == 'New'">
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label translate>{{data.title}} Name</mat-label>
-                    <input matInput type="text" formControlName="amountName" [placeholder]="data.title + ' Name'">
+                    <input matInput type="text" formControlName="amountName">
                 </mat-form-field>
             </div>
 
             <div class="flex flex-row items-center w-full">
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label translate>Amount</mat-label>
-                    <input matInput type="text" formControlName="amount"
-                        placeholder="amount">   
+                    <input matInput type="number" formControlName="amount" placeholder="amount">
                 </mat-form-field>
             </div>
 

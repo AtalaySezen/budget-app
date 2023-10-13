@@ -6,13 +6,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HomeDialogComponent } from 'src/app/pages/home/home-dialog/home-dialog.component';
 import { DataService } from 'src/app/shared/services/data.service';
 import { TableDialogComponent } from './table-dialog/table-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [MatTableModule, MatIconModule, MatButtonModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule, CommonModule],
 })
 export class TableComponent {
   @Input() dataSource = new MatTableDataSource<any>();
@@ -20,15 +21,18 @@ export class TableComponent {
   @Input() dataType: string;
   displayedColumns = ['type', 'amount', 'actions'];
 
-  constructor(private dialog: MatDialog, private dataService: DataService) {}
+  constructor(private dialog: MatDialog, private dataService: DataService) {
+  }
 
-  openDialog(title: string, id: number) {
+  openDialog(title: string, id: number, type?: string) {
     const dialogRef = this.dialog.open(HomeDialogComponent, {
       width: '800px',
       height: 'auto',
       data: {
         id: id,
         title: title,
+        type: type,
+        dataType: this.dataType
       },
     });
 

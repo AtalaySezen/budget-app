@@ -11,7 +11,7 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions</th>
             <td mat-cell *matCellDef="let element">
-                <button (click)="openDialog('Edit',id)" color="accent" mat-icon-button
+                <button (click)="openDialog('Edit',id,element.type)" color="accent" mat-icon-button
                     aria-label="Example icon button with a vertical three dot icon">
                     <mat-icon>edit</mat-icon>
                 </button>
