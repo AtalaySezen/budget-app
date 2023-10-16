@@ -16,7 +16,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { SettingsComponent } from './pages/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { TableComponent } from './components/table/table.component';
@@ -30,7 +29,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     DataCardsComponent,
     ChartComponent,
     HomeDialogComponent,
-    SettingsComponent,
   ],
   imports: [
     BrowserModule,
